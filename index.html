@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pendidikan Kota Banjarmasin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <div class="login-photo"></div>
+    <div class="login-card">
+      <div class="city-emblem"><span>BANJARMASIN</span><small>KOTA SERIBU SUNGAI</small></div>
+      <p class="eyebrow">PORTAL DATA PENDIDIKAN</p>
+      <h1>Selamat datang</h1>
+      <p class="login-copy">Masuk untuk mengeksplorasi cerita di balik data pendidikan Banjarmasin.</p>
+      <form id="loginForm">
+        <label>Username<input id="username" type="text" placeholder="Nawwaf" required /></label>
+        <label>Password<input id="password" type="password" placeholder="••••••••" required /></label>
+        <label>Masuk sebagai<select id="role" required><option value="admin">Admin</option><option value="user">User</option></select></label>
+        <label class="remember-label"><input id="remember" type="checkbox" /> <span>Ingat saya di perangkat ini</span></label>
+        <button class="primary-btn" type="submit">Masuk ke dashboard <span>→</span></button>
+        <p class="login-hint">Admin: Nawwaf / nawaf123 · User: Banjarmasin / user123</p>
+        <p id="loginError" class="error-text"></p>
+      </form>
+      <p class="login-footer">Data induk peserta didik · Kota Banjarmasin</p>
+    </div>
+  </div>
+
+  <main id="app" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark brand-word">PENDIDIKAN</div><div><small>Banjarmasin</small></div></div>
+      <nav>
+        <a class="active" href="#overview"><span>◈</span>Overview</a>
+        <a href="#insight"><span>◌</span>Insight pendidikan</a>
+        <a href="#schools"><span>▦</span>Daftar satuan</a>
+        <a href="#about"><span>◎</span>Tentang portal</a>
+      </nav>
+      <div class="side-photo"><div><small>CATATAN HARI INI</small><strong>Data yang baik membuka percakapan yang lebih baik.</strong></div></div>
+      <button id="logoutBtn" class="logout-btn">↪ Keluar</button>
+    </aside>
+
+    <section class="content">
+      <header class="topbar"><div><p class="eyebrow">KOTA BANJARMASIN · DATA PENDIDIKAN</p><h2>Halo, Nawwaf <span>✦</span></h2></div><div class="profile"><div class="avatar">NW</div><div><strong>Nawwaf</strong><small>Data curator</small></div><button id="mobileLogout" aria-label="Keluar">↪ Keluar</button></div></header>
+      <div class="hero" id="overview"><div><span class="hero-badge">BAKUL DATA · KAYUH BAIMBAI</span><p class="eyebrow light">PORTAL DATA PENDIDIKAN · BANJARMASIN MAJU SEJAHTERA</p><h1>Membaca Banjarmasin<br>melalui <em>data.</em></h1><p>Gambaran ekosistem satuan pendidikan dan peserta didik di Kota Seribu Sungai.</p><a href="#insight" class="hero-link">Lihat insight <span>↗</span></a></div><div class="hero-orb"><div class="orb-ring"></div><div class="orb-number">149.702</div><div class="orb-label">peserta didik</div></div></div>
+
+      <div class="stat-grid">
+        <article class="stat-card"><div class="stat-icon peach">▦</div><small>Satuan pendidikan</small><strong>1.087</strong><span class="trend up">↗ 21 bentuk</span></article>
+        <article class="stat-card"><div class="stat-icon mint">◉</div><small>Total peserta didik</small><strong>149.702</strong><span class="trend up">↗ data induk</span></article>
+        <article class="stat-card"><div class="stat-icon lavender">⌁</div><small>Total rombongan belajar</small><strong>6.826</strong><span class="trend neutral">Rasio 22 / rombongan belajar</span></article>
+        <article class="stat-card accent-card"><small>Wilayah cakupan</small><strong>5</strong><span>Kecamatan di Banjarmasin</span><div class="mini-dots">•••••</div></article>
+      </div>
+
+      <div class="section-head" id="insight"><div><p class="eyebrow">01 · INSIGHT UTAMA</p><h3>Di mana peserta didik berada?</h3></div><div class="legend"><span class="dot blue"></span>Jumlah peserta didik <span class="dot coral"></span>Jumlah satuan</div></div>
+      <div class="insight-grid"><article class="chart-card"><div class="chart-title"><div><strong>Distribusi peserta didik</strong><small>berdasarkan bentuk pendidikan</small></div><span class="chip">Top 6</span></div><div class="bars" id="bars"></div></article><article class="quote-card"><div class="quote-mark">“</div><p>Setiap angka adalah wajah, keluarga, dan harapan yang sedang tumbuh.</p><small>— Banjarmasin Maju Sejahtera</small><div class="quote-photo"></div></article></div>
+
+      <div class="section-head table-head" id="schools"><div><p class="eyebrow">02 · DATA TERATAS</p><h3>Satuan dengan peserta terbanyak</h3></div><div class="table-tools admin-only"><input id="search" type="search" placeholder="Cari sekolah..." /><select id="filter"><option value="all">Semua bentuk</option></select></div></div>
+      <div class="table-wrap"><table><thead><tr><th>#</th><th>Satuan pendidikan</th><th>Bentuk</th><th>Wilayah</th><th>Peserta didik</th><th>Status</th></tr></thead><tbody id="schoolRows"></tbody></table></div>
+      <section class="documentation" id="documentation"><div class="section-head"><div><p class="eyebrow">03 · DOKUMENTASI</p><h3>Banjarmasin Maju Sejahtera</h3></div><a class="outline-link admin-only" href="https://disdik.banjarmasinkota.go.id/" target="_blank" rel="noreferrer">Portal resmi Disdik ↗</a></div><div class="doc-grid"><article class="doc-card doc-main"><div class="doc-image"></div><div class="doc-copy"><span class="doc-tag">KOTA BANJARMASIN</span><h4>Pendidikan yang dekat, terbuka, dan berdampak.</h4><p>Ruang dokumentasi program, layanan publik, dan cerita pembelajaran di Kota Seribu Sungai.</p><a class="admin-only" href="https://disdik.banjarmasinkota.go.id/profil/program-dan-kegiatan" target="_blank" rel="noreferrer">Baca program prioritas ↗</a></div></article><article class="doc-card doc-mini admin-only"><div class="mini-icon">✦</div><h4>Program prioritas</h4><p>BOS, sarana sekolah, pembinaan GTK, dan Banjarmasin Pintar.</p><a href="https://disdik.banjarmasinkota.go.id/profil/program-dan-kegiatan" target="_blank" rel="noreferrer">Lihat dokumen ↗</a></article><article class="doc-card doc-mini"><div class="mini-icon coral-icon">◎</div><h4>Dokumentasi satuan</h4><p>Pilih sekolah di tabel untuk membuka profil dokumentasi dan catatan singkat.</p><button class="outline-link admin-only" id="randomSchool">Buka sekolah ↗</button></article></div></section>
+      <footer id="about"><span>Pendidikan Banjarmasin · Maju Sejahtera</span><span>Sumber: Data Induk Peserta Didik & Portal Disdik Kota Banjarmasin</span></footer>
+    </section>
+  </main>
+  <div id="schoolModal" class="modal hidden"><div class="modal-backdrop" id="modalBackdrop"></div><article class="modal-card"><button class="modal-close" id="modalClose">×</button><div class="modal-cover"></div><div class="modal-body"><span class="doc-tag">DOKUMENTASI SEKOLAH</span><h3 id="modalTitle">SMKN 3 BANJARMASIN</h3><p id="modalMeta"></p><div class="modal-stats"><span><strong id="modalCount">2.269</strong> peserta didik</span><span><strong id="modalStatus">NEGERI</strong> status satuan</span></div><p class="modal-note">Ruang dokumentasi ini menjadi titik awal untuk menambahkan foto kegiatan, prestasi, program unggulan, dan cerita warga sekolah.</p><button class="primary-btn admin-only" id="favoriteBtn">♡ Tandai sekolah</button></div></article></div>
+  <script src="app.js"></script>
+</body>
+</html>
